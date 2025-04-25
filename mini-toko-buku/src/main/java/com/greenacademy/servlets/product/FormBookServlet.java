@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.greenacademy.models.Book;
+import com.greenacademy.service.BookService;
 
 
 
@@ -20,13 +21,22 @@ public class FormBookServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
-
-        // request.getParameter("message");
-        
-        // request.setAttribute("message","<p style=\"color: red\">Please fill in the form</p>");
-
-        // request.setAttribute("age", Integer.parseInt(request.getParameter("age")));
         
         request.getRequestDispatcher("/WEB-INF/views/products/create-book.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String bookTitle = request.getParameter("title");
+        String bookIsbn = request.getParameter("isbn");
+        LocalDate bookYear = LocalDate.parse(request.getParameter("year"));
+        double bookPrice = Double.parseDouble(request.getParameter("price"));
+        int bookStock = Integer.parseInt(request.getParameter("stock"));
+
+        Book book = new Book(bookTitle, bookPrice, bookStock, bookIsbn, bookYear);
+
+        BookService bookService = new BookService(request);
+        bookService.addBook(book);
+
+        response.sendRedirect(request.getContextPath()+"/books");
     }
 }

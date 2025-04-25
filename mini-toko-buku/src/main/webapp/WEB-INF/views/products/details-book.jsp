@@ -8,7 +8,7 @@
     <h2>Daftar Product</h2>
         <div>
             <ul>
-            <c:forEach items="${books}" var="book">
+            <c:forEach items="${listBooks}" var="book">
                 <li>
                     <h2>${book.title}</h2>
                     <h3>${book.isbn}</h3>

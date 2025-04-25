@@ -1,6 +1,6 @@
 <%@ include file="/WEB-INF/views/layouts/header.jsp" %>
 <h2>Form Add Book</h2>
-    <form action="./books" method="get">
+    <form action="" method="POST">
     <table>
         <tr>
             <td><label for="title">Title</label></td>
