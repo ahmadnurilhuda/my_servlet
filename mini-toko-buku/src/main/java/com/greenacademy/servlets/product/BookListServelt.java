@@ -34,7 +34,6 @@ public class BookListServelt extends HttpServlet {
             try {
                 year = LocalDate.parse(yearStr);
             } catch (DateTimeParseException e) {
-                System.out.println("Format tahun tidak valid: " + yearStr);
                 year = LocalDate.now();
             }
         } else {
@@ -47,7 +46,7 @@ public class BookListServelt extends HttpServlet {
             try {
                 price = Double.parseDouble(priceStr);
             } catch (NumberFormatException e) {
-                System.out.println("Format harga tidak valid: " + priceStr);
+                price= 0.0;
             }
         }
 
@@ -57,7 +56,8 @@ public class BookListServelt extends HttpServlet {
             try {
                 stock = Integer.parseInt(stockStr);
             } catch (NumberFormatException e) {
-                System.out.println("Format stok tidak valid: " + stockStr);
+                stock = 0;
+
             }
         }
 
