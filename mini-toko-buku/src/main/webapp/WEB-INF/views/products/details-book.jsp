@@ -1,22 +1,23 @@
 
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/layouts/header.jsp" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details Book</title>
-<body>
     <div>
+        <a href="./books/create">tambah buku</a>
+    </div>
+    <div>
+    <h2>Daftar Product</h2>
         <div>
-            <h2>${title}</h2>
-            <h3>${isbn}</h3>
-            <h4>${year}</h4>
-            <p>${price}</p>
-            <p>${stock}</p>
+            <ul>
+            <c:forEach items="${books}" var="book">
+                <li>
+                    <h2>${book.title}</h2>
+                    <h3>${book.isbn}</h3>
+                    <h4>${book.year}</h4>
+                    <p>${book.price}</p>
+                    <p>${book.stock}</p>
+                </li>
+               </c:forEach> 
+            </ul>
         </div>
     </div>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/layouts/footer.jsp" %>

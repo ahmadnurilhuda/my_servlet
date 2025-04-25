@@ -1,16 +1,6 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Form Add Book</title>
-</head>
-<body>
+<%@ include file="/WEB-INF/views/layouts/header.jsp" %>
 <h2>Form Add Book</h2>
-    <form action="" method="post">
+    <form action="./books" method="get">
     <table>
         <tr>
             <td><label for="title">Title</label></td>
@@ -44,5 +34,25 @@
         </tr>
     </table>
     </form>
-</body>
-</html>
+
+    <%-- <h3>${message}</h3>
+    <p>Nama: <c:out value="${message}" /></p>
+
+    <c:if test="${age < 18}">
+    <p>[ini yang if] Kamu masih di bawah umur.</p>
+    </c:if>
+
+    <c:choose>
+        <c:when test="${age < 13}">
+            <p>[ini yang choose] Anak-anak</p>
+        </c:when>
+            <c:when test="${age < 18}">
+                <p>[ini yang choose] Remaja</p>
+            </c:when>
+        <c:otherwise>
+            <p>[ini yang choose] Dewasa</p>
+        </c:otherwise>
+    </c:choose> --%>
+
+
+<%@ include file="/WEB-INF/views/layouts/footer.jsp" %>
