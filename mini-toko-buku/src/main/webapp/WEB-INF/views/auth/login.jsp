@@ -28,6 +28,11 @@
                 <td><input type="password" id="password" name="password" required></td>
             </tr>
             <tr>
+                <td><label for="remember_me">Remember Me?</label></td>
+                <td></td>
+                <td><input type="checkbox" name="remember_me"></td>
+            </tr>
+            <tr>
                 <td colspan="2">
                     <button type="submit">Login</button>
                 </td>

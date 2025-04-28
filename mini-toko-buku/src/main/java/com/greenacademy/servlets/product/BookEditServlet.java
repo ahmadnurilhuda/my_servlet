@@ -53,37 +53,44 @@ public class BookEditServlet extends HttpServlet {
         if (bookId == null || bookId.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Book ID is Missing");
             return;
+        } else {
+
+            BookService bookService = new BookService(request);
+            Book bookById = bookService.getBookById(bookId);
+    
+            if (bookById == null) {
+                response.sendRedirect(request.getContextPath() + "/books");
+                return;
+            }
+    
+            // Ambil data dari form
+            String bookTitle = request.getParameter("title");
+            String bookIsbn = request.getParameter("isbn");
+            LocalDate bookYear = LocalDate.parse(request.getParameter("year"));
+            double bookPrice = Double.parseDouble(request.getParameter("price"));
+            int bookStock = Integer.parseInt(request.getParameter("stock"));
+            String bookCategory = request.getParameter("category");
+            String bookDescription = request.getParameter("description");
+    
+            bookById.setTitle(bookTitle);
+            bookById.setIsbn(bookIsbn);
+            bookById.setYear(bookYear);
+            bookById.setPrice(bookPrice);
+            bookById.setStock(bookStock);
+            bookById.setDescription(bookDescription);
+            bookById.setCategory(bookCategory);
+    
+            bookService.updateBook(bookById);
+
+            String message = "Book Updated Succesfully";
+            request.getSession().setAttribute("message",message);
+
+    
+            response.sendRedirect(request.getContextPath() + "/books");
         }
 
         // Cari buku berdasarkan ID
-        BookService bookService = new BookService(request);
-        Book bookById = bookService.getBookById(bookId);
-
-        if (bookById == null) {
-            response.sendRedirect(request.getContextPath() + "/books");
-            return;
-        }
-
-        // Ambil data dari form
-        String bookTitle = request.getParameter("title");
-        String bookIsbn = request.getParameter("isbn");
-        LocalDate bookYear = LocalDate.parse(request.getParameter("year"));
-        double bookPrice = Double.parseDouble(request.getParameter("price"));
-        int bookStock = Integer.parseInt(request.getParameter("stock"));
-        String bookCategory = request.getParameter("category");
-        String bookDescription = request.getParameter("description");
-
-        bookById.setTitle(bookTitle);
-        bookById.setIsbn(bookIsbn);
-        bookById.setYear(bookYear);
-        bookById.setPrice(bookPrice);
-        bookById.setStock(bookStock);
-        bookById.setDescription(bookDescription);
-        bookById.setCategory(bookCategory);
-
-        bookService.updateBook(bookById);
-
-        response.sendRedirect(request.getContextPath() + "/books");
+       
 
     }
 }

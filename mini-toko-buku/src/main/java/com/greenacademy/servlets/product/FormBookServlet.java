@@ -39,6 +39,9 @@ public class FormBookServlet extends HttpServlet{
         BookService bookService = new BookService(request);
         bookService.addBook(book);
 
+        String message = "Book Add Succesfully";
+        request.getSession().setAttribute("message",message);
+
         response.sendRedirect(request.getContextPath()+"/books");
     }
 }

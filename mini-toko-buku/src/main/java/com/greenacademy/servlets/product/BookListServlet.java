@@ -25,8 +25,12 @@ public class BookListServlet extends HttpServlet {
         BookService bookService = new BookService(request);
         ArrayList<Book> listBooks = bookService.getBook();
 
+        String message = (String) request.getSession().getAttribute("message");
+        request.getSession().removeAttribute("message");
 
+        request.setAttribute("message", message);
         request.setAttribute("listBooks", listBooks);
+
         
         request.getRequestDispatcher("/WEB-INF/views/products/details-book.jsp").forward(request, response);
 

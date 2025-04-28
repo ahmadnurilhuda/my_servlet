@@ -20,7 +20,7 @@
         <tr>
             <td><label for="price">Price</label></td>
             <td>:</td>
-            <td><input type="number" name="price" value="${book.price}" required></td>
+            <td><input type="number" name="price" value="<fmt:formatNumber value="${book.price}" groupingUsed="false" maxFractionDigits="0" />" required></td>
         </tr>
         <tr>
             <td><label for="stock">Stock</label></td>
