@@ -31,8 +31,10 @@ public class FormBookServlet extends HttpServlet{
         LocalDate bookYear = LocalDate.parse(request.getParameter("year"));
         double bookPrice = Double.parseDouble(request.getParameter("price"));
         int bookStock = Integer.parseInt(request.getParameter("stock"));
+        String bookCategory = request.getParameter("category");
+        String bookDescription = request.getParameter("description");
 
-        Book book = new Book(bookTitle, bookPrice, bookStock, bookIsbn, bookYear);
+        Book book = new Book(bookTitle, bookPrice, bookStock, bookIsbn, bookYear, bookDescription, bookCategory);
 
         BookService bookService = new BookService(request);
         bookService.addBook(book);

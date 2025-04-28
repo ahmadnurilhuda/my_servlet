@@ -15,12 +15,28 @@ import com.greenacademy.models.Book;
 import com.greenacademy.service.BookService;
 
 @WebServlet("/books")
-public class BookListServelt extends HttpServlet {
+public class BookListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         response.setContentType("text/html");
 
-        // ArrayList<Book> listBooks = new ArrayList<>();
+        
+
+        BookService bookService = new BookService(request);
+        ArrayList<Book> listBooks = bookService.getBook();
+
+
+        request.setAttribute("listBooks", listBooks);
+        
+        request.getRequestDispatcher("/WEB-INF/views/products/details-book.jsp").forward(request, response);
+
+    }
+
+}
+
+
+
+// ArrayList<Book> listBooks = new ArrayList<>();
 
         // // Ambil parameter dan kondisikan nilai default jika null
         // String title = request.getParameter("title");
@@ -66,15 +82,3 @@ public class BookListServelt extends HttpServlet {
         // listBooks.add(newBook);
 
         // request.setAttribute("books", listBooks);
-
-        BookService bookService = new BookService(request);
-        ArrayList<Book> listBooks = bookService.getBook();
-
-
-        request.setAttribute("listBooks", listBooks);
-        
-        request.getRequestDispatcher("/WEB-INF/views/products/details-book.jsp").forward(request, response);
-
-    }
-
-}

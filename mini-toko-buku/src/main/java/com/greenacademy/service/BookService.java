@@ -31,8 +31,27 @@ public class BookService {
 
 
     }
-    public void updateBook(Book book){
-        System.out.println("Edit Book "+ book.getTitle());
+    public void updateBook(Book updateBook){
+        for (Book book : this.listBooks) {
+            if(book.getId().equals(updateBook.getId())){
+                book.setTitle(updateBook.getTitle());
+                book.setIsbn(updateBook.getIsbn());
+                book.setYear(updateBook.getYear());
+                book.setPrice(updateBook.getPrice());
+                book.setStock(updateBook.getStock());
+                book.setCategory(updateBook.getCategory());
+                book.setDescription(updateBook.getDescription());
+            }
+        }
+    }
+
+    public Book getBookById(String id){
+        for(Book book : this.listBooks){
+            if(id.equals(book.getId())){
+                return book;
+            }
+        }
+        return null;
     }
     public void deleteBook(Book book){
         System.out.println("Delete Book :"+ book.getTitle());

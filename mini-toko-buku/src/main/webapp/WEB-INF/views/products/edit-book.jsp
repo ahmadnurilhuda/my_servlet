@@ -1,41 +1,43 @@
 <%@ include file="/WEB-INF/views/layouts/header.jsp" %>
-<h2>Form Add Book</h2>
+<h2>Form Edit Book</h2>
     <form action="" method="POST">
     <table>
         <tr>
             <td><label for="title">Title</label></td>
             <td>:</td>
-            <td><input type="text" name="title" required></td>
+            <td><input type="text" name="title" value="${book.title}" required></td>
         </tr>
         <tr>
             <td><label for="isbn">ISBN Number</label></td>
             <td>:</td>
-            <td><input type="text" name="isbn" required></td>
+            <td><input type="text" name="isbn" value="${book.isbn}" required></td>
         </tr>
         <tr>
             <td><label for="year">Date Release</label></td>
             <td>:</td>
-            <td><input type="date" name="year" required></td>
+            <td><input type="date" name="year" value="${book.year}" required></td>
         </tr>
         <tr>
             <td><label for="price">Price</label></td>
             <td>:</td>
-            <td><input type="number" name="price" required></td>
+            <td><input type="number" name="price" value="${book.price}" required></td>
         </tr>
         <tr>
             <td><label for="stock">Stock</label></td>
             <td>:</td>
-            <td><input type="number" name="stock" required></td>
+            <td><input type="number" name="stock" value="${book.stock}" required></td>
         </tr>
         <tr>
             <td><label for="description">description</label></td>
             <td>:</td>
-            <td><textarea name="description" id=""></textarea></td>
+            <td>
+                <textarea name="description" id=""> ${book.description} </textarea>
+            </td>
         </tr>
         <tr>
             <td><label for="category">Category</label></td>
             <td>:</td>
-            <td><input type="text" name="category" required></td>
+            <td><input type="text" name="category" value="${book.category}" required></td>
         </tr>
 
         <tr>
