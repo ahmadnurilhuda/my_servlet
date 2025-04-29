@@ -22,6 +22,7 @@
                         <th>Year</th>
                         <th>Price</th>
                         <th>Stock</th>
+                        <th>Category</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -32,11 +33,13 @@
                             <td>${book.title}</td>
                             <td>${book.isbn}</td>
                             <td>${book.year}</td>
+
                             <td>
                                 <fmt:formatNumber value="${book.price}" type="currency"
                                 currencySymbol="Rp" maxFractionDigits="0" />
                             </td>
                             <td>${book.stock}</td>
+                            <td>${book.category}</td>
                             <td>
                                 <a href="./books/edit/${book.id}">Edit</a>
                                 <form action="./books/delete/${book.id}" method="post" style="display:inline;">

@@ -2,7 +2,7 @@ package com.greenacademy.servlets.product;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -21,11 +21,12 @@ public class BookService {
     }
 
     public ArrayList<Book> getBook() {
+        // ? kondisi awal arraylistnya null
         return listBooks == null ? new ArrayList<Book>() : this.listBooks;
     }
 
     public void addBook(Book book) {
-        // ? kondisi awal arraylistnya null
+        
         ArrayList<Book> listBooks = this.getBook();
         listBooks.add(book);
         // ? Simpan Kembali arraylist dalam session

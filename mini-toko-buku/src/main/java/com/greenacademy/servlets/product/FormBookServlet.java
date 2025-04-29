@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.greenacademy.models.Book;
+import com.greenacademy.models.Category;
 import com.greenacademy.service.BookService;
+import com.greenacademy.service.CategoryService;
 
 
 
@@ -21,6 +23,10 @@ public class FormBookServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
+
+        CategoryService categoryService = new CategoryService(request);
+        ArrayList<Category> listCategories = categoryService.getCategory();
+        request.setAttribute("listCategories", listCategories);
         
         request.getRequestDispatcher("/WEB-INF/views/products/create-book.jsp").forward(request, response);
     }

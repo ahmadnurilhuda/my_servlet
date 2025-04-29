@@ -1,9 +1,10 @@
 package com.greenacademy.servlets.product;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
+
 import java.util.ArrayList;
+
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.greenacademy.models.Book;
+import com.greenacademy.models.Category;
 import com.greenacademy.service.BookService;
+import com.greenacademy.service.CategoryService;
 
 @WebServlet("/books")
 public class BookListServlet extends HttpServlet {
@@ -20,15 +23,17 @@ public class BookListServlet extends HttpServlet {
             throws IOException, ServletException {
         response.setContentType("text/html");
 
-        
-
         BookService bookService = new BookService(request);
         ArrayList<Book> listBooks = bookService.getBook();
+
+        CategoryService categoryService = new CategoryService(request);
+        ArrayList<Category> listCategories = categoryService.getCategory();
 
         String message = (String) request.getSession().getAttribute("message");
         request.getSession().removeAttribute("message");
 
         request.setAttribute("message", message);
+        request.setAttribute("listCategories", listCategories);
         request.setAttribute("listBooks", listBooks);
 
         

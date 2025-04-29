@@ -30,14 +30,20 @@
         <tr>
             <td><label for="description">description</label></td>
             <td>:</td>
-            <td><textarea name="description" id=""></textarea></td>
+            <td><textarea name="description" id="" required></textarea></td>
         </tr>
         <tr>
             <td><label for="category">Category</label></td>
             <td>:</td>
-            <td><input type="text" name="category" required></td>
+            <td>
+                <select name="category" required>
+                    <option value="">   Pilih Kategori  </option>
+                        <c:forEach var="cat" items="${listCategories}">
+                            <option value="${cat.name}">${cat.name}</option>
+                        </c:forEach>
+                </select>
+            </td>
         </tr>
-
         <tr>
             <td colspan="2">
                 <button type="submit">Add</button>
